@@ -22,7 +22,7 @@ def pos_pascal_triangle(level, index):
         Solve combinations for getting positional value in level.
         fomular: nCr = n!/r!(n-r)!
     """
-    return factorial(level) / (factorial(index) * factorial(level - index))
+    return factorial(level) // (factorial(index) * factorial(level - index))
 
 
 def pascal_triangle(n):
