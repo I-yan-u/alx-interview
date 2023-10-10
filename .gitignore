@@ -1,3 +1,5 @@
 *.pyc
 test*
 main*
+main.py
+test3*
