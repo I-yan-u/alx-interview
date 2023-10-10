@@ -11,6 +11,7 @@ def canUnlockAll(boxes):
         for i in range(len(boxes)):
             unlocked = k in boxes[i] and k != i
             if unlocked:
+                print(boxes[i], unlocked)
                 break
         if unlocked is False:
             return unlocked
