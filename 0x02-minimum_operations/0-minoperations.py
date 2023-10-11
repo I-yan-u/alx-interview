@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/python3
 """
 Calculates the fewest number of
 operations needed to result in exactly
