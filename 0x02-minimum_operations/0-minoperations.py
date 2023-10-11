@@ -12,7 +12,6 @@ def primeFactorization(x):
             x /= div
         else:
             div += 1
-    print(array)
     return array
 
 
