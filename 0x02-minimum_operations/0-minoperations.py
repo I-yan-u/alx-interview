@@ -47,10 +47,10 @@ def minOperations(n: int) -> int:
     string = ''  # clipboard text
     operations = 0  # number of operations
 
-    facts = factors(n)
-
     if n <= 0 or type(n) is not int:
         return 0
+
+    facts = factors(n)
 
     if len(factors(n)) == 2:
         last_fact = factors(n)[-1]
