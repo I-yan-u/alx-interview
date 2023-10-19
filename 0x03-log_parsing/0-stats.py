@@ -3,7 +3,6 @@
 Write a script that reads stdin line by line and computes metrics
 """
 from sys import stdin
-import re
 
 
 def count_occurrences(input_list, target):
@@ -22,7 +21,6 @@ def stat_dict(lst, hash_table):
 
 
 def stats():
-    requests = []
     status_codes = []
     stat_count = {}
     file_size = 0
@@ -35,18 +33,16 @@ def stats():
             file_size += int(pattern[-1])
 
             if len(status_codes) % 10 == 0:
-                status_codes.sort()
                 stat_count = stat_dict(status_codes, stat_count)
                 print("File size: {}".format(file_size))
-                for k, v in stat_count.items():
-                    print("{}: {}".format(k, v))
+                for k in sorted(stat_count):
+                    print("{}: {}".format(k, stat_count[k]))
 
     except KeyboardInterrupt:
-        status_codes.sort()
         stat_count = stat_dict(status_codes, stat_count)
         print("File size: {}".format(file_size))
-        for k, v in stat_count.items():
-            print("{}: {}".format(k, v))
+        for k in sorted(stat_count):
+            print("{}: {}".format(k, stat_count[k]))
 
 
 if __name__ == '__main__':
