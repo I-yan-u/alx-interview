@@ -26,13 +26,13 @@ def stats():
     status_codes = []
     stat_count = {}
     file_size = 0
+    reg = r'(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] "GET ([^"]+)" (\d+) (\d+)'
     try:
         for line in stdin:
             log_entry = line
             requests.append(line)
 
-            pattern = r'(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] "GET ([^"]+)" \
-                (\d+) (\d+)'
+            pattern = reg
 
             matches = re.match(pattern, log_entry)
 
@@ -49,8 +49,6 @@ def stats():
                     print("File size: {}".format(file_size))
                     for k, v in stat_count.items():
                         print("{}: {}".format(k, v))
-                    stat_count.clear()
-                    status_codes.clear()
             else:
                 continue
     except KeyboardInterrupt:
@@ -59,8 +57,6 @@ def stats():
         print("File size: {}".format(file_size))
         for k, v in stat_count.items():
             print("{}: {}".format(k, v))
-        stat_count.clear()
-        status_codes.clear()
 
 
 if __name__ == '__main__':
