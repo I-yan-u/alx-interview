@@ -31,7 +31,8 @@ def stats():
             log_entry = line
             requests.append(line)
 
-            pattern = r'(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] "GET ([^"]+)" (\d+) (\d+)'
+            pattern = r'(\d+\.\d+\.\d+\.\d+) - \[([^\]]+)\] "GET ([^"]+)" \
+                (\d+) (\d+)'
 
             matches = re.match(pattern, log_entry)
 
@@ -60,6 +61,7 @@ def stats():
             print("{}: {}".format(k, v))
         stat_count.clear()
         status_codes.clear()
+
 
 if __name__ == '__main__':
     stats()
