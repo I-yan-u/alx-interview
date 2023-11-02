@@ -12,7 +12,8 @@ The N queens puzzle is the challenge of placing N non-attacking queens on an N×
     - One solution per line
     - Format: see example
     - You don’t have to print the solutions in a specific order
-- You are only allowed to import the `sys` module
+- You are only allowed to import the `sys` module.
+
 Read: [Queen](https://intranet.alxswe.com/rltoken/ghWqI1wvx6g-Ul7nrufMKA), [Backtracking](https://intranet.alxswe.com/rltoken/-hgZbgRFkwmxaKnLnCIuEQ)
 
 ```
