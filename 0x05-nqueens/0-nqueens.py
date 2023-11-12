@@ -1,59 +1,61 @@
 #!/usr/bin/python3
-"""N Queens"""
+"""N Queens placement on NxN chessboard"""
+
+
 import sys
 
 
-def print_board(board, n):
-    """Print allocated positions to the queen"""
-    b = []
-
-    for i in range(n):
-        for j in range(n):
-            if j == board[i]:
-                b.append([i, j])
-    print(b)
+def generate_solutions(row, column):
+    solution = [[]]
+    for queen in range(row):
+        solution = place_queen(queen, column, solution)
+    return solution
 
 
-def is_position_safe(board, i, j, r):
-    """Checks if the position is safe for the queen"""
-    return board[i] in (j, j - i + r, i - r + j)
+def place_queen(queen, column, prev_solution):
+    safe_position = []
+    for array in prev_solution:
+        for x in range(column):
+            if is_safe(queen, x, array):
+                safe_position.append(array + [x])
+    return safe_position
 
 
-def safe_positions(board, row, n):
-    """Find all safe positions where the queen can be allocated"""
-    if row == n:
-        print_board(board, n)
-
+def is_safe(q, x, array):
+    if x in array:
+        return (False)
     else:
-        for j in range(n):
-            allowed = True
-            for i in range(row):
-                if is_position_safe(board, i, j, row):
-                    allowed = False
-            if allowed:
-                board[row] = j
-                safe_positions(board, row + 1, n)
+        return all(abs(array[column] - x) != q - column
+                   for column in range(q))
 
 
-def create_board(size):
-    """Generates the board"""
-    return [0 * size for i in range(size)]
+def init():
+    if len(sys.argv) != 2:
+        print("Usage: nqueens N")
+        sys.exit(1)
+    if sys.argv[1].isdigit():
+        n = int(sys.argv[1])
+    else:
+        print("N must be a number")
+        sys.exit(1)
+    if n < 4:
+        print("N must be at least 4")
+        sys.exit(1)
+    return (n)
 
 
-if len(sys.argv) != 2:
-    print("Usage: nqueens N")
-    exit(1)
+def n_queens():
 
-try:
-    n = int(sys.argv[1])
-except BaseException:
-    print("N must be a number")
-    exit(1)
+    n = init()
+    # generate all solutions
+    solutions = generate_solutions(n, n)
+    # print solutions
+    for array in solutions:
+        clean = []
+        for q, x in enumerate(array):
+            clean.append([q, x])
+        print(clean)
 
-if (n < 4):
-    print("N must be at least 4")
-    exit(1)
 
-board = create_board(int(n))
-row = 0
-safe_positions(board, row, int(n))
+if __name__ == '__main__':
+    n_queens()
