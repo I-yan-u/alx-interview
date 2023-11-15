@@ -3,7 +3,7 @@
 """
 
 
-def push(data, array): # Adds data to index 0 of array
+def push(data, array):  # Adds data to index 0 of array
     temp = array
     array = []
     array.append(data)
@@ -13,10 +13,10 @@ def push(data, array): # Adds data to index 0 of array
 
 
 def rotate_2d_matrix(matrix):
-    temp = [] # placeholder for matrix data
-    temp2 = matrix.copy() # copy of matrix
-    col_len = len(matrix) # number of rows
-    row_len = len(matrix[0]) # number of columns
+    temp = []  # placeholder for matrix data
+    temp2 = matrix[:]  # copy of matrix
+    col_len = len(matrix)  # number of rows
+    row_len = len(matrix[0])  # number of columns
     for i in range(row_len):
         temp_row = []
         for row in matrix:
